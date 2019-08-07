@@ -2,6 +2,7 @@ package com.herokuapp.kirtanadarabal.restaurantreservationapi.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,11 @@ public class RestaurantService {
 	
 	public Long countOfAllRestaurants() {
 		return restaurantRepository.count();
+	}
+	
+	//optional may or may not contain null values
+	public Optional<Restaurant> getRestaurant(Long id) {
+		return restaurantRepository.findById(id);
 	}
 	
 	public void addRestaurant(Restaurant restaurant) {
