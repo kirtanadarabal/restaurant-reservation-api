@@ -60,4 +60,18 @@ public class RestaurantController {
 		//return status code 201 and location of the object if successfully created 
 		return ResponseEntity.created(location).build();	
 	}
+	
+	/* Update the details for a restaurant given it's id */
+	@RequestMapping(method=RequestMethod.PUT, value="/restaurants/{id}")
+	public ResponseEntity<Void> updateRestaurant(@PathVariable Long id, @RequestBody Restaurant restaurant) {
+		restaurantService.updateRestaurant(id, restaurant);
+		return ResponseEntity.ok().build();
+	}
+	
+	/* Delete a restaurant given it's id */
+	@RequestMapping(method=RequestMethod.DELETE, value="/restaurants/{id}")
+	public ResponseEntity<Void> removeRestaurant(@PathVariable Long id) {
+		restaurantService.removeRestaurant(id);
+		return ResponseEntity.ok().build();
+	}
 }

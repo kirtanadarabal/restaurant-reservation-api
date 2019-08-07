@@ -36,5 +36,13 @@ public class RestaurantService {
 	public void addRestaurant(Restaurant restaurant) {
 		restaurantRepository.save(restaurant);
 	}
+	
+	public void updateRestaurant(Long id, Restaurant restaurant) {
+		restaurantRepository.save(restaurant);
+	}
+	
+	public void removeRestaurant(Long id) {
+		restaurantRepository.deleteById(id);
+	}
 
 }

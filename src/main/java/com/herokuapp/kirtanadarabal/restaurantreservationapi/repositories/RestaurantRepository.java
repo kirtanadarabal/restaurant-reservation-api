@@ -14,5 +14,6 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 	public long count();
 	public List<Restaurant> findByName(String name);
 	public Optional<Restaurant> findById(Long Id);
+	public void deleteById(Long Id);
 
 }
