@@ -38,11 +38,14 @@ public class RestaurantController {
 		return ResponseEntity.ok(response);
 	}
 	
-	/* Retrieves a restaurant of a specific id, if restaurant not found returns null */
+	/* Retrieves a restaurant of a specific id, if restaurant not found returns 404 status code */
 	@RequestMapping(method=RequestMethod.GET, value="/restaurants/{id}")
 	public ResponseEntity<Optional<Restaurant>> getRestaurant(@PathVariable Long id) {
-		
-		return ResponseEntity.ok(restaurantService.getRestaurant(id));
+		if (restaurantService.getRestaurant(id).isPresent()){
+			return ResponseEntity.ok(restaurantService.getRestaurant(id));
+		}else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	/* Adds a restaurant to the database */
