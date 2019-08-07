@@ -2,6 +2,7 @@ package com.herokuapp.kirtanadarabal.restaurantreservationapi.controllers;
 
 import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,11 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantService restaurantService;
 	
-	//TODo Fix injection
-	//@Autowired
-	//private Map<String, Object> response;
+	@Autowired
+	private HashMap<String, Object> response;
 	
 	@RequestMapping(method=RequestMethod.GET, value="/restaurants")
 	public Map<String, Object> getAllRestaurants(){
-		
-		//JSON response
-		Map<String, Object> response = new HashMap<String, Object>();
 		
 		//retrieve all the restaurants from the database
 		response.put("count", restaurantService.countOfAllRestaurants());
